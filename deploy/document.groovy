@@ -10,8 +10,8 @@ pipeline {
         // 本地代码路径
         code_path = "server"
         // 远程代码仓库地址
-        code_repo = "git@github.com:Westmist/document.git"
-//        code_repo = "https://github.com/Westmist/document.git"
+//        code_repo = "git@github.com:Westmist/document.git"
+        code_repo = "https://github.com/Westmist/document.git"
         // 代码分支
         code_branch = "master"
     }
