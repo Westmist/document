@@ -29,6 +29,7 @@ pipeline {
         stage('构建打包') {
             steps {
                 sh """
+                   yarn add -D vuepress
                    cd ${code_path}
                    vuepress build docs
                 """
