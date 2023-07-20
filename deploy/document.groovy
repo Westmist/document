@@ -63,7 +63,7 @@ pipeline {
                                 configName: 'centos',
                                 transfers: [
                                         sshTransfer(cleanRemote: false, excludes: '',
-                                                execCommand: 'cd /data && docker-compose up -d vuepress',
+                                                execCommand: 'cd /data && docker-compose restart vuepress',
                                                 noDefaultExcludes: false, patternSeparator: '[, ]+',
                                                 remoteDirectory: '', remoteDirectorySDF: false,
                                                 removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false,
