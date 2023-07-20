@@ -41,7 +41,6 @@ pipeline {
                         publishers: [sshPublisherDesc(
                                 configName: 'centos',
                                 transfers: [transfer(sourceFiles: '${code_path}/docs/.vuepress/dist/', remoteDirectory: '/data/vuepress/')],
-                                execCommand: 'rsync --delete'
                         )]
                 )
             }
