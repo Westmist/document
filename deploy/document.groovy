@@ -43,24 +43,13 @@ pipeline {
                                 configName: 'centos',
                                 transfers: [
                                         sshTransfer(
-                                                sourceFiles: "${code_path}/docs/.vuepress/dist/",
+                                                removePrefix : "${code_path}/docs/.vuepress/dist",
+                                                sourceFiles: "${code_path}/docs/.vuepress/dist/**",
                                                 remoteDirectory: "/data/vuepress/"
                                         )
                                 ],
                         )]
                 )
-
-                sshPublisher(
-                        publishers: [sshPublisherDesc(
-                                configName: 'centos',
-                                transfers: [
-                                        sshTransfer(
-                                                cleanRemote: true, excludes: '',
-                                                execCommand: '',
-                                                noDefaultExcludes: false, patternSeparator: '[, ]+',
-                                                remoteDirectory: '/data/vuepress/',
-                                                sourceFiles: '${code_path}/docs/.vuepress/dist/')],
-                                useWorkspaceInPromotion: false, verbose: true)])
             }
         }
 
@@ -74,11 +63,11 @@ pipeline {
                         publishers: [sshPublisherDesc(
                                 configName: 'centos',
                                 transfers: [
-                                        sshTransfer(cleanRemote: false, excludes: '',
-                                                execCommand: 'cd /data && docker-compose restart vuepress',
-                                                noDefaultExcludes: false, patternSeparator: '[, ]+',
-                                                removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false,
-                                useWorkspaceInPromotion: false, verbose: true)])
+                                        sshTransfer(
+                                                execCommand: "cd /data && docker-compose restart vuepress",
+                                                sourceFiles: "",
+                                                remoteDirectory: ""
+                                        )], verbose: true)])
             }
         }
     }
