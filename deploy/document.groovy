@@ -3,7 +3,6 @@ pipeline {
     agent any
 
     parameters {
-        choice(name: 'dockerDeploySer', choices: ['172.17.0.1'], description: 'docker部署服')
         booleanParam(name: 'restart_nginx', defaultValue: false, description: '重启容器')
     }
 
@@ -38,10 +37,13 @@ pipeline {
 
         stage('传输文件') {
             steps {
-                sh """
-                   cd ${code_path}/docs/.vuepress/dist
-                   rsync -zr --delete-after ./ root@${dockerDeploySer}:/data/vuepress/
-                """
+                sshPublisher(
+                        publishers: [sshPublisherDesc(
+                                configName: 'centos',
+                                transfers: [transfer(sourceFiles: '${code_path}/docs/.vuepress/dist/', remoteDirectory: '/data/vuepress/')],
+                                execCommand: 'rsync --delete'
+                        )]
+                )
             }
         }
 
@@ -50,10 +52,15 @@ pipeline {
                 expression { params.restart_nginx == true }
             }
             steps {
-                sh """
-                   cd /data
-                   docker-compose up -d vuepress
-                """
+                sshPublisher(
+                        publishers: [sshPublisherDesc(
+                                configName: 'centos',
+                                transfers: [transfer(
+                                        execCommand: 'docker-compose up -d vuepress',
+                                        remoteDirectory: '/data'
+                                )]
+                        )]
+                )
             }
         }
 
