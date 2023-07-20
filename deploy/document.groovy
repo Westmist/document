@@ -30,6 +30,7 @@ pipeline {
             steps {
                 sh """
                    cd ${code_path}
+                   yarn install
                    vuepress build docs
                 """
             }
