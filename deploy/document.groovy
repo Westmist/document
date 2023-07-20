@@ -51,22 +51,28 @@ pipeline {
             }
         }
 
-        stage('重启容器') {
-            when {
-                expression { params.restart_nginx == true }
-            }
-            steps {
-                sshPublisher(
-                        publishers: [sshPublisherDesc(
-                                configName: 'centos',
-                                transfers: [
-                                        sshTransfer(
-                                                execCommand: 'cd /data && docker-compose up -d vuepress',
-                                                returnStdout: true
-                                        )
-                                ],
-                        )]
-                )
+        stages {
+            stage('重启容器') {
+                when {
+                    expression { params.restart_nginx == true }
+                }
+                steps {
+                    // 使用 "Publish Over SSH" 插件传输文件到远程主机，并执行远程 Shell 命令并返回输出
+                    script {
+                        def result = sshPublisher(
+                                publishers: [sshPublisherDesc(
+                                        configName: 'centos',
+                                        transfers: [
+                                                sshTransfer(
+                                                        execCommand: 'cd /data && docker-compose up -d vuepress',
+                                                        returnStdout: true
+                                                )
+                                        ],
+                                )]
+                        )
+                        echo "Shell 命令执行结果：${result}"
+                    }
+                }
             }
         }
 
