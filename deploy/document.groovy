@@ -40,7 +40,10 @@ pipeline {
                 sshPublisher(
                         publishers: [sshPublisherDesc(
                                 configName: 'centos',
-                                transfers: [transfer(sourceFiles: '${code_path}/docs/.vuepress/dist/', remoteDirectory: '/data/vuepress/')],
+                                transfers: [sshTransfer(
+                                        sourceFiles: '${code_path}/docs/.vuepress/dist/',
+                                        remoteDirectory: '/data/vuepress/')],
+                                execCommand: 'rsync --delete'
                         )]
                 )
             }
@@ -54,7 +57,7 @@ pipeline {
                 sshPublisher(
                         publishers: [sshPublisherDesc(
                                 configName: 'centos',
-                                transfers: [transfer(
+                                transfers: [sshTransfer(
                                         execCommand: 'docker-compose up -d vuepress',
                                         remoteDirectory: '/data'
                                 )]
