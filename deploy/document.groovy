@@ -3,6 +3,7 @@ pipeline {
     agent any
 
     parameters {
+        choice(name: 'dockerDeploySer', choices: ['172.17.0.1'], description: 'docker部署服')
         booleanParam(name: 'restart_nginx', defaultValue: false, description: '重启容器')
     }
 
@@ -30,7 +31,6 @@ pipeline {
             steps {
                 sh """
                    cd ${code_path}
-                   yarn add -D vuepress
                    vuepress build docs
                 """
             }
@@ -40,7 +40,7 @@ pipeline {
             steps {
                 sh """
                    cd ${code_path}/docs/.vuepress/dist
-                   rsync -zr --delete-after ./ /data/vuepress/
+                   rsync -zr --delete-after ./ root@${dockerDeploySer}:/data/vuepress/
                 """
             }
         }
