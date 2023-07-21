@@ -1,10 +1,10 @@
 ---
 home: true
-heroImage: /Ansible.png
+heroImage: /logo.png
 heroText: 测试
 tagline: 项目笔记
 actionText: 快速开始 →
-actionLink: /page/README.md
+actionLink: /page/ansible.md
 features:
 - title: 简洁至上
   details: 以 Markdown 为中心的项目结构，以最少的配置帮助你专注于写作。
