@@ -518,7 +518,7 @@ pipeline {
         stage('重启服务器-docker') {
             steps {
                 echo '重启容器'
-                sh "ssh root@${dockerDeploySer} \"cd ${deploy_path} && docker-compose pull && docker-compose restart\""
+                sh "ssh root@${dockerDeploySer} \"cd ${deploy_path} && docker-compose pull && docker-compose up -d\""
             }
         }
     }
