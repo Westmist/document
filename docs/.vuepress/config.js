@@ -35,11 +35,11 @@ module.exports = {
         //     '/page-a/abc'
         //   ]
         },
-        // {
-        //   title: 'Group 2',
-        //   children: [ /* ... */ ],
-        //   initialOpenGroupIndex: -1 // 可选的, 默认值是 0
-        // }
+        {
+          title: 'Docker',
+          path: '/page/docker.md',
+          initialOpenGroupIndex: -1 // 可选的, 默认值是 0
+        }
     ],
     
 
