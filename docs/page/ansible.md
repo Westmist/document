@@ -1,9 +1,9 @@
 ## Ansible
 ### 1、简介
-![Ansible](/images/ansible.png)
+![Ansible](/images/ansible.png)   
 Ansible是一种自动化工具，用于配置管理、应用部署和任务自动化。它可以帮助您在大规模的计算机系统上自动执行各种任务，包括配置管理、应用程序部署、编排和协调操作等   
-> 主要文件
-> 1、inventory.ini 默认文件为 hosts 定义被控端列表
+> 主要文件  
+> 1、inventory.ini 默认文件为 hosts 定义被控端列表   
 > 2、playbook.yaml 执行剧本定义任务和待执行的被控端组
 ### 2、安装 Ansible （只需要主控端安装）
 ```shell
@@ -84,5 +84,5 @@ ansible-playbook hello-world.yaml -i inventory.ini
 ```
 执行结果
 ![Ansible_playbook](/images/ansible_playbook.png)
-#### 参考文档
+### 参考文档
 [Ansible 官方文档](https://docs.ansible.com/ansible/latest/getting_started/index.html)
