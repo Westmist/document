@@ -51,7 +51,7 @@ ansible --version
 ansible all -m ping
 ```
 ![Ansible_ping](/images/ansible_ping.png)
-###4、使用 ansible-playbook 执行多任务
+### 4、使用 ansible-playbook 执行多任务
 > 编写 Playbook (Ansible 剧本) hello-world.yaml
 ```yaml
 # app 组下的被控端将执行下述的三个任务

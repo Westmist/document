@@ -39,6 +39,10 @@ module.exports = {
           title: 'Docker',
           path: '/page/docker.md',
           initialOpenGroupIndex: -1 // 可选的, 默认值是 0
+        },
+        {
+          title: 'vuepress',
+          path: '/page/vuepress.md',
         }
     ],
     
