@@ -530,8 +530,8 @@ jenkins服务器上配置部署服的SSH私钥后即可实现全自动的 CI/CD 
 将在 Pipeline 步骤中传输配置表和 compose 文件到部署服（如无目录将自动创建）
 :::
 ### 参考文档
-[Docker 官方文档](https://docs.docker.com/get-started/)
-[Docker Compose 官方文档](https://docs.docker.com/compose/)
-[Jenkins Pipeline 官方文档](https://www.jenkins.io/doc/book/pipeline/)
-[Docker Hub 官方文档](https://hub.docker.com/)
+[Docker 官方文档](https://docs.docker.com/get-started/)  
+[Docker Compose 官方文档](https://docs.docker.com/compose/)  
+[Jenkins Pipeline 官方文档](https://www.jenkins.io/doc/book/pipeline/)  
+[Docker Hub 官方文档](https://hub.docker.com/)  
 [Docker Compose GitHub 下载地址](https://github.com/docker/compose/tags)
