@@ -37,12 +37,12 @@ docker守护进程配置文件默认路径为 `/etc/docker/daemon.json`, 如无�
 # 将二进制文件安转到 /usr/local/bin/ 目录下
 sudo curl -L https://github.com/docker/compose/releases/download/v2.19.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 # 提权
-sudo chmod +x /usr/local/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
 # 创建软链接
-sudo  ln -s /usr/local/docker-compose /usr/bin/docker-compose
+sudo  ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 # 卸载时只需要删除二进制文件以及移除软链接
-rm /usr/bin/docker-compose
-rm /usr/local/docker-compose
+rm /usr/local/bin/docker-compose
+rm /usr/local/bin/docker-compose
 ```
 #### 4、验证版本
 ![Docker](/images/docker_version.png)

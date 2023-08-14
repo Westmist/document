@@ -41,8 +41,16 @@ module.exports = {
           initialOpenGroupIndex: -1 // 可选的, 默认值是 0
         },
         {
-          title: 'vuepress',
+          title: 'Vuepress',
           path: '/page/vuepress.md',
+        },
+        {
+          title: 'Arthas',
+          path: '/page/arthas.md',
+        },
+        {
+          title: 'Jenkins',
+          path: '/page/jenkins.md',
         }
     ],
     
