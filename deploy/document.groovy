@@ -80,7 +80,7 @@ pipeline {
                                 configName: 'centos',
                                 transfers: [
                                         sshTransfer(
-                                                execCommand: "docker-compose -f ${compose_path} restart vuepress",
+                                                execCommand: "docker-compose -f ${compose_path} stop && docker-compose -f ${compose_path} up -d",
                                                 sourceFiles: "",
                                                 remoteDirectory: ""
                                         )], verbose: true)])
