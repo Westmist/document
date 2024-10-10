@@ -1,0 +1,8 @@
+services:
+  vuepress:
+    image: nginx:latest
+    container_name: vuepress-nginx
+     volumes:
+      - /data/vuepress:/usr/share/nginx/html
+    ports:
+      - 8000:80

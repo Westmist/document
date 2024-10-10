@@ -7,10 +7,9 @@ pipeline {
     }
 
     environment {
-        // 本地代码路径
-        code_path = "server"
+        // compose 文件
+        compose_path = "/home/compose/vuepress-docker-compose.yaml"
         // 远程代码仓库地址
-//        code_repo = "git@github.com:Westmist/document.git"
         code_repo = "https://github.com/Westmist/document.git"
         // 代码分支
         code_branch = "master"
@@ -29,7 +28,7 @@ pipeline {
            
                     // 执行 Git Checkout
                     checkout([$class           : 'GitSCM', branches: [[name: "${code_branch}"]],
-                    extensions       : [[$class: 'RelativeTargetDirectory', relativeTargetDir: "${code_path}"]],
+                    extensions       : [[$class: 'RelativeTargetDirectory', relativeTargetDir: ""]],
                     userRemoteConfigs: [[url: "${code_repo}"]]])
                 }
             }
@@ -47,7 +46,7 @@ pipeline {
 
             steps {
                 sh """
-                   cd ${code_path}
+                   yarn install
                    vuepress build docs
                 """
             }
@@ -60,8 +59,8 @@ pipeline {
                                 configName: 'centos',
                                 transfers: [
                                         sshTransfer(
-                                                removePrefix : "${code_path}/docs/.vuepress/dist",
-                                                sourceFiles: "${code_path}/docs/.vuepress/dist/**",
+                                                removePrefix : "docs/.vuepress/dist",
+                                                sourceFiles: "docs/.vuepress/dist/**",
                                                 remoteDirectory: "/data/vuepress/"
                                         )
                                 ],
@@ -81,7 +80,7 @@ pipeline {
                                 configName: 'centos',
                                 transfers: [
                                         sshTransfer(
-                                                execCommand: "cd /data && docker-compose restart vuepress",
+                                                execCommand: "docker-compose -f ${compose_path} restart vuepress",
                                                 sourceFiles: "",
                                                 remoteDirectory: ""
                                         )], verbose: true)])
