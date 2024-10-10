@@ -44,10 +44,10 @@ module.exports = {
           title: 'Vuepress',
           path: '/page/vuepress.md',
         },
-        {
-          title: 'Arthas',
-          path: '/page/arthas.md',
-        },
+        // {
+        //   title: 'Arthas',
+        //   path: '/page/arthas.md',
+        // },
         {
           title: 'Jenkins',
           path: '/page/jenkins.md',
